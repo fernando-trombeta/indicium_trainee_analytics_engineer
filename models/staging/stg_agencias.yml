@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_agencias
+    description: "Tabela da camada staging das agências bancárias, criada a partir da seed 'agencias'"
+    columns:
+      - name: id_agencia
+        description: "Identificador único da agência bancária"
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_agencia
+        description: "Nome da agência bancária"
+
+      - name: endereco_agencia
+        description: "Endereço da agência bancaria"
+
+      - name: cidade_agencia
+        description: "Cidade onde a agência bancária está localizada"
+
+      - name: uf_agencia
+        description: "Unidade Federativa (estado) da agência bancária"
+
+      - name: data_abertura_agencia
+        description: "Data de abertura da agência bancária"
+        tests:
+          - not_null
+
+      - name: tipo_agencia
+        description: "Tipo de agência (ex.: matriz, filial, posto de atendimento)"

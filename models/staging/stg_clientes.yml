@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_clientes
+    description: "Tabela da camada staging de clientes."
+    columns:
+      - name: id_cliente
+        description: "Identificador único do cliente."
+        tests:
+          - not_null
+          - unique
+
+      - name: primeiro_nome_cliente
+        description: "Primeiro nome do cliente."
+        tests:
+          - not_null
+
+      - name: ultimo_nome_cliente
+        description: "Último nome do cliente."
+        tests:
+          - not_null
+
+      - name: nome_completo_cliente
+        description: "Nome completo do cliente, concatenando primeiro e último nome."
+        tests:
+          - not_null
+
+      - name: email_cliente
+        description: "Email do cliente."
+
+      - name: tipo_cliente
+        description: "Tipo de cliente (ex: PF, PJ, VIP, REGULAR)."
+        tests:
+          - not_null
+
+      - name: data_inclusao_cliente
+        description: "Data de inclusão do cliente no sistema."
+
+      - name: cpf_cnpj_cliente
+        description: "Número do CPF ou CNPJ do cliente."
+        tests:
+          - not_null
+          - unique
+
+      - name: data_nascimento_cliente
+        description: "Data de nascimento do cliente (se PF)."
+
+      - name: endereco_cliente
+        description: "Endereço do cliente."
+
+      - name: cep_cliente
+        description: "CEP do cliente."

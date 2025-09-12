@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: stg_contas
+    description: "Tabela da camada staging de contas bancárias."
+    columns:
+      - name: numero_conta
+        description: "Número da conta."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_cliente
+        description: "Identificador único de clientes."
+        tests:
+          - not_null
+
+      - name: id_agencia
+        description: "Identificador único de agências."
+        tests:
+          - not_null
+
+      - name: id_colaborador
+        description: "Identificador único de colaboradores."
+
+      - name: tipo_conta
+        description: "Tipo da conta (Pessoa Física ou Pessoa Jurídica)."
+        tests:
+          - not_null
+
+      - name: data_abertura_conta
+        description: "Data de abertura da conta."
+        tests:
+          - not_null
+
+      - name: saldo_total_conta
+        description: "Saldo total da conta."
+
+      - name: saldo_disponivel_conta
+        description: "Saldo disponível da conta."
+
+      - name: data_ultimo_lancamento_conta
+        description: "Data do último lançamento da conta."
