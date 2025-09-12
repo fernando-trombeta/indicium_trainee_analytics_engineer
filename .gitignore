@@ -1,0 +1,10 @@
+target/
+dbt_packages/
+logs/
+venv/
+dbt_internal_packages/
+*.json
+*.log
+*.pyc
+.DS_Store
+

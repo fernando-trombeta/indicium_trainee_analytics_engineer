@@ -1,0 +1,12 @@
+banco_vitoria:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      keyfile: "C:/Users/Fernando/chaves/dw-banco-vitoria-f936558e686a.json"
+      project: dw-banco-vitoria
+      dataset: analytics
+      location: southamerica-east1
+      threads: 4
+      priority: interactive
