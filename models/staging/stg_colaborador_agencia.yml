@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_colaborador_agencia
+    description: "Tabela da camada staging que relaciona colaboradores às agências bancárias, 
+                  criada a partir do seed 'colaborador_agencia'."
+    columns:
+      - name: id_colaborador
+        description: "Identificador único do colaborador."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_agencia
+        description: "Identificador da agência bancária vinculada ao colaborador."
+        tests:
+          - not_null
