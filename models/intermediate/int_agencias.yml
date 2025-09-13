@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: int_agencias
+    description: "Tabela intermediate de agências, criada a partir da staging 'stg_agencias'."
+    columns:
+      - name: sk_agencia
+        description: "Surrogate key da agência."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_agencia
+        description: "Identificador natural da agência (proveniente da fonte)."
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_agencia
+        description: "Nome da agência."
+        tests:
+          - not_null
+
+      - name: cidade_agencia
+        description: "Cidade onde a agência está localizada."
+
+      - name: uf_agencia
+        description: "UF (estado) da agência."
+        tests:
+          - not_null
+
+      - name: regiao_agencia
+        description: "Região geográfica brasileira derivada da UF."
+        tests:
+          - not_null
+
+      - name: data_abertura_agencia
+        description: "Data de abertura da agência."
+
+      - name: anos_atividade_agencia
+        description: "Tempo de atividade em anos."
+
+      - name: tipo_agencia
+        description: "Tipo da agência."

@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: int_transacoes
+    description: "Tabela intermediate de transações, criada a partir da staging 'stg_transacoes'."
+    columns:
+      - name: sk_transacao
+        description: "Surrogate key da tabela int_transacoes."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_transacao
+        description: "Identificador natural da transação."
+        tests:
+          - not_null
+          - unique
+
+      - name: numero_conta
+        description: "Número da conta associada à transação."
+        tests:
+          - not_null
+
+      - name: data_transacao
+        description: "Data da transação."
+        tests:
+          - not_null
+
+      - name: nome_transacao
+        description: "Descrição/nome da transação."
+
+      - name: valor_transacao
+        description: "Valor monetário da transação."
+
+      - name: ano_transacao
+        description: "Ano da transação."
+
+      - name: mes_transacao
+        description: "Mês da transação."

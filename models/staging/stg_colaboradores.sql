@@ -14,7 +14,14 @@ with
             , cast(cpf as string) as cpf_colaborador
             , cast(data_nascimento as date) as data_nascimento_colaborador
             , cast(endereco as string) as endereco_colaborador
-            , cast(cep as string) as cep_colaborador
+            -- CEP numérico (para joins com faixas de CEP)
+            , safe_cast(lpad(regexp_replace(cast(cep as string), r'[^0-9]', ''), 8, '0') as int64) as cep_colaborador_num
+            -- CEP com hífen (XXXXX-XXX) para consumo/exibição
+            , (
+                substr(lpad(regexp_replace(cast(cep as string), r'[^0-9]', ''), 8, '0'), 1, 5)
+                || '-' ||
+                substr(lpad(regexp_replace(cast(cep as string), r'[^0-9]', ''), 8, '0'), 6, 3)
+              ) as cep_colaborador
         from source_data
 )
 

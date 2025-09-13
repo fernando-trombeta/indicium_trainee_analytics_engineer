@@ -1,52 +1,50 @@
 version: 2
 
 models:
-  - name: stg_colaboradores
-    description: "Tabela da camada staging dos colaboradores bancários, criada a partir da seed 'colaboradores'."
+  - name: int_colaboradores
+    description: "Tabela intermediate de colaboradores, criada a partir da staging 'stg_colaboradores'."
     columns:
+      - name: sk_colaboradores
+        description: "Surrogate key da tabela int_colaboradores."
+        tests:
+          - not_null
+          - unique
+
       - name: id_colaborador
-        description: "Identificador único do colaborador."
+        description: "Identificador natural do colaborador."
         tests:
           - not_null
           - unique
 
       - name: primeiro_nome_colaborador
         description: "Primeiro nome do colaborador."
-        tests:
-          - not_null
 
       - name: ultimo_nome_colaborador
         description: "Último nome do colaborador."
-        tests:
-          - not_null
 
       - name: nome_completo_colaborador
         description: "Nome completo do colaborador."
-        tests:
-          - not_null
 
       - name: email_colaborador
-        description: "Endereço de e-mail do colaborador, armazenado em letras minúsculas."
+        description: "Email do colaborador."
         tests:
           - not_null
           - unique
 
       - name: cpf_colaborador
-        description: "CPF do colaborador, armazenado como texto para preservar zeros à esquerda."
+        description: "CPF do colaborador."
         tests:
           - not_null
           - unique
 
       - name: data_nascimento_colaborador
         description: "Data de nascimento do colaborador."
-        tests:
-          - not_null
 
       - name: endereco_colaborador
-        description: "Endereço residencial do colaborador."
+        description: "Endereço do colaborador."
 
       - name: cep_colaborador
-        description: "CEP do colaborador formatado com hífen (XXXXX-XXX), padronizado para exibição."
+        description: "CEP do colaborador."
 
       - name: cep_colaborador_num
         description: "CEP do colaborador em formato numérico (int), padronizado com 8 dígitos, usado para joins."

@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: int_propostas_credito
+    description: "Tabela intermediate de propostas de crédito, criada a partir da staging 'stg_propostas_credito'."
+    columns:
+      - name: sk_propostas_credito
+        description: "Surrogate key da tabela int_propostas_credito."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_proposta
+        description: "Identificador natural da proposta."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_cliente
+        description: "Identificador do cliente associado à proposta."
+        tests:
+          - not_null
+
+      - name: id_colaborador
+        description: "Identificador do colaborador responsável pela proposta."
+        tests:
+          - not_null
+
+      - name: data_entrada_proposta
+        description: "Data de entrada/abertura da proposta."
+        tests:
+          - not_null
+
+      - name: status_proposta
+        description: "Status atual da proposta."
+        tests:
+          - not_null
+
+      - name: taxa_juros_mensal
+        description: "Taxa de juros mensal (valor decimal)."
+
+      - name: valor_proposta
+        description: "Valor total da proposta."
+
+      - name: valor_financiamento
+        description: "Valor a ser financiado."
+
+      - name: valor_entrada
+        description: "Valor de entrada pago pelo cliente."
+
+      - name: valor_prestacao
+        description: "Valor de cada prestação."
+
+      - name: quantidade_parcelas
+        description: "Quantidade de parcelas do financiamento."
+        tests:
+          - not_null
+
+      - name: carencia
+        description: "Quantidade de meses de carência (se houver)."
