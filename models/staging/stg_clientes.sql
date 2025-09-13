@@ -16,7 +16,14 @@ with
             , cast(cpfcnpj as string) as cpf_cnpj_cliente
             , cast(data_nascimento as date) as data_nascimento_cliente
             , cast(endereco as string) as endereco_cliente
-            , cast(cep as string) as cep_cliente
+            -- cep numérico (para joins)
+            , safe_cast(lpad(regexp_replace(cast(cep as string), r'[^0-9]', ''), 8, '0') as int) as cep_cliente_num
+            -- cep com hífen (para consumo)
+            , (
+                substr(lpad(regexp_replace(cast(cep as string), r'[^0-9]', ''), 8, '0'), 1, 5)
+                || '-' ||
+                substr(lpad(regexp_replace(cast(cep as string), r'[^0-9]', ''), 8, '0'), 6, 3)
+              ) as cep_cliente
         from source_data
 )
 

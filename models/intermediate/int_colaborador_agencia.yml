@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: int_colaborador_agencia
+    description: "Tabela intermediate de relacionamento colaborador e agência, criada a partir 
+                  da staging 'stg_colaborador_agencia'."
+    columns:
+      - name: sk_colaborador_agencia
+        description: "Surrogate key da tabelala int_colaborador_agencia."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_colaborador
+        description: "Identificador natural do colaborador."
+        tests:
+          - not_null
+
+      - name: id_agencia
+        description: "Identificador natural da agência."
+        tests:
+          - not_null

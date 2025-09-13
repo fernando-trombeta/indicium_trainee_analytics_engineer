@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: int_clientes
+    description: "Tabela intermediate de clientes, criada a partir da staging 'stg_clientes'."
+    columns:
+      - name: sk_clientes
+        description: "Surrogate key da tabela int_clientes."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_cliente
+        description: "Identificador natural do cliente."
+        tests:
+          - not_null
+          - unique
+
+      - name: primeiro_nome_cliente
+        description: "Primeiro nome do cliente."
+
+      - name: ultimo_nome_cliente
+        description: "Último nome do cliente."
+
+      - name: nome_completo_cliente
+        description: "Nome completo do cliente."
+
+      - name: email_cliente
+        description: "Email do cliente."
+        tests:
+          - not_null
+
+      - name: tipo_cliente
+        description: "Tipo de cliente."
+
+      - name: data_inclusao_cliente
+        description: "Data de inclusão do cliente."
+        tests:
+          - not_null
+
+      - name: cpf_cnpj_cliente
+        description: "CPF ou CNPJ do cliente."
+        tests:
+          - not_null
+          - unique
+
+      - name: data_nascimento_cliente
+        description: "Data de nascimento do cliente."
+
+      - name: endereco_cliente
+        description: "Endereço do cliente."
+
+      - name: cep_cliente_num
+        description: "CEP do cliente em formato numérico (int), padronizado com 8 dígitos, usado para joins."
+        tests:
+          - not_null
+
+      - name: cep_cliente
+        description: "CEP do cliente formatado com hífen (XXXXX-XXX), padronizado para exibição."
+        tests:
+          - not_null

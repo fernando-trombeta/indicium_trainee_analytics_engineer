@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: int_contas
+    description: "Tabela intermediate de contas, criada a partir da staging 'stg_contas'."
+    columns:
+      - name: sk_contas
+        description: "Surrogate key da tabela int_contas."
+        tests:
+          - not_null
+          - unique
+
+      - name: numero_conta
+        description: "Número da conta bancária."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_cliente
+        description: "Identificador do cliente."
+        tests:
+          - not_null
+
+      - name: id_agencia
+        description: "Identificador da agência."
+        tests:
+          - not_null
+
+      - name: id_colaborador
+        description: "Identificador do colaborador responsável."
+
+      - name: tipo_conta
+        description: "Tipo da conta."
+        tests:
+          - not_null
+
+      - name: data_abertura_conta
+        description: "Data de abertura da conta."
+        tests:
+          - not_null
+
+      - name: data_ultimo_lancamento_conta
+        description: "Data do último lançamento ocorrido na conta."
+
+      - name: saldo_total_conta
+        description: "Saldo total da conta."
+
+      - name: saldo_disponivel_conta
+        description: "Saldo disponível da conta (liberado para uso)."
+
+      - name: dias_desde_abertura_conta
+        description: "Quantidade de dias desde a abertura da conta."

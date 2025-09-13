@@ -49,4 +49,7 @@ models:
         description: "Endereço do cliente."
 
       - name: cep_cliente
-        description: "CEP do cliente."
+        description: "CEP do cliente formatado com hífen (XXXXX-XXX), padronizado para exibição."
+
+      - name: cep_cliente_num
+        description: "CEP do cliente em formato numérico (int), padronizado com 8 dígitos, usado para joins."
