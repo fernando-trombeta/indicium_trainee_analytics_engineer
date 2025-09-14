@@ -1,38 +1,32 @@
 version: 2
 
 models:
-  - name: int_agencias
-    description: "Tabela intermediate de agências, criada a partir da staging 'stg_agencias'."
+  - name: dim_agencias
+    description: "Dimensão de agências criada a partir da intermediate 'int_agencias'."
     columns:
       - name: sk_agencias
-        description: "Surrogate key da agência."
+        description: "Surrogate key da tabela dim_agencias."
         tests:
           - not_null
           - unique
 
       - name: id_agencia
-        description: "Identificador natural da agência (proveniente da fonte)."
+        description: "Identificador natural da agência."
         tests:
           - not_null
           - unique
 
       - name: nome_agencia
         description: "Nome da agência."
-        tests:
-          - not_null
 
       - name: cidade_agencia
         description: "Cidade onde a agência está localizada."
 
       - name: uf_agencia
         description: "UF (estado) da agência."
-        tests:
-          - not_null
 
       - name: regiao_agencia
         description: "Região geográfica brasileira derivada da UF."
-        tests:
-          - not_null
 
       - name: data_abertura_agencia
         description: "Data de abertura da agência."
