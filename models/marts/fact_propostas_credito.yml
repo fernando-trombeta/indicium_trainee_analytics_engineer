@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: fact_propostas_credito
+    description: "Fato de propostas de crédito (grão: 1 linha por proposta), enriquecida com clientes, colaboradores, agências e calendário."
+    columns:
+      # chaves naturais e substitutas
+      - name: sk_propostas_credito
+        description: "Surrogate key da proposta (herdada da int_propostas_credito)."
+        tests: [not_null, unique]
+
+      - name: id_proposta
+        description: "Identificador natural da proposta."
+        tests: [not_null, unique]
+
+      - name: id_cliente
+        description: "Identificador do cliente associado à proposta."
+      - name: id_colaborador
+        description: "Identificador do colaborador responsável pela proposta."
+      - name: id_agencia
+        description: "Identificador da agência (derivado do vínculo colaborador–agência)."
+
+      - name: sk_clientes
+        description: "Surrogate key do cliente (FK para dim_clientes)."
+
+      - name: sk_colaboradores
+        description: "Surrogate key do colaborador (FK para dim_colaboradores)."
+
+      - name: sk_agencias
+        description: "Surrogate key da agência (FK para dim_agencias)."
+
+      # tempo
+      - name: data
+        description: "Data de entrada da proposta (FK para dim_dates.data)."
+        tests:
+          - not_null
+
+      - name: ano
+        description: "Ano (dim_dates)."
+      - name: mes
+        description: "Mês (dim_dates)."
+      - name: trimestre
+        description: "Trimestre (dim_dates)."
+      - name: dia
+        description: "Dia do mês (dim_dates)."
+      - name: dia_semana_num
+        description: "Número do dia da semana (1=Domingo ... 7=Sábado, dim_dates)."
+      - name: dia_semana_nome
+        description: "Nome do dia da semana (dim_dates)."
+      - name: tipo_dia
+        description: "Dia Útil ou Final de Semana (dim_dates)."
+      - name: ano_mes
+        description: "Ano-Mês (YYYY-MM, dim_dates)."
+
+      # medidas originais
+      - name: status_proposta
+        description: "Status da proposta (ex.: APROVADA, REPROVADA, PENDENTE)."
+      - name: taxa_juros_mensal
+        description: "Taxa de juros mensal (decimal)."
+      - name: valor_proposta
+        description: "Valor total da proposta."
+      - name: valor_financiamento
+        description: "Valor a ser financiado."
+      - name: valor_entrada
+        description: "Valor de entrada."
+      - name: valor_prestacao
+        description: "Valor de cada prestação."
+      - name: quantidade_parcelas
+        description: "Quantidade de parcelas."
+      - name: carencia
+        description: "Carência em meses (se houver)."
+
+      # medidas derivadas
+      - name: flag_aprovada
+        description: "Indicador (1/0) de proposta aprovada."
