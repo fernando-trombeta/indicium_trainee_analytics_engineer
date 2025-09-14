@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_propostas_credito
+    description: "Tabela da camada staging de propostas financeiras."
+    columns:
+      - name: id_proposta
+        description: "Identificador único da proposta."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_cliente
+        description: "Identificador único de clientes."
+        tests:
+          - not_null
+
+      - name: id_colaborador
+        description: "Identificador único de colaboradores."
+
+      - name: data_entrada_proposta
+        description: "Data de entrada da proposta."
+        tests:
+          - not_null
+
+      - name: taxa_juros_mensal
+        description: "Taxa de juros mensal aplicada à proposta."
+
+      - name: valor_proposta
+        description: "Valor total da proposta."
+
+      - name: valor_financiamento
+        description: "Valor financiado da proposta."
+
+      - name: valor_entrada
+        description: "Valor de entrada pago pelo cliente."
+
+      - name: valor_prestacao
+        description: "Valor de cada prestação do financiamento."
+
+      - name: quantidade_parcelas
+        description: "Número de parcelas do financiamento."
+        tests:
+          - not_null
+
+      - name: carencia
+        description: "Período de carência."
+
+      - name: status_proposta
+        description: "Status da proposta (ex: APROVADA, REPROVADA, PENDENTE)."
+        tests:
+          - not_null

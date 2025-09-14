@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: int_colaboradores
+    description: "Tabela intermediate de colaboradores, criada a partir da staging 'stg_colaboradores'."
+    columns:
+      - name: sk_colaboradores
+        description: "Surrogate key da tabela int_colaboradores."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_colaborador
+        description: "Identificador natural do colaborador."
+        tests:
+          - not_null
+          - unique
+
+      - name: primeiro_nome_colaborador
+        description: "Primeiro nome do colaborador."
+
+      - name: ultimo_nome_colaborador
+        description: "Último nome do colaborador."
+
+      - name: nome_completo_colaborador
+        description: "Nome completo do colaborador."
+
+      - name: email_colaborador
+        description: "Email do colaborador."
+        tests:
+          - not_null
+          - unique
+
+      - name: cpf_colaborador
+        description: "CPF do colaborador."
+        tests:
+          - not_null
+          - unique
+
+      - name: data_nascimento_colaborador
+        description: "Data de nascimento do colaborador."
+
+      - name: endereco_colaborador
+        description: "Endereço do colaborador."
+
+      - name: cep_colaborador
+        description: "CEP do colaborador."
+
+      - name: cep_colaborador_num
+        description: "CEP do colaborador em formato numérico (int), padronizado com 8 dígitos, usado para joins."

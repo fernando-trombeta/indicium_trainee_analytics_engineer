@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dim_colaborador_agencia
+    description: "Dimensão de relacionamento colaborador–agência criada a partir da intermediate 'int_colaborador_agencia'."
+    columns:
+      - name: sk_colaborador_agencia
+        description: "Surrogate key da tabela dim_colaborador_agencias."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_colaborador
+        description: "Identificador do colaborador."
+        tests:
+          - not_null
+
+      - name: id_agencia
+        description: "Identificador da agência."
+        tests:
+          - not_null

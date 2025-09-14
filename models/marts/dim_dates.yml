@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: dim_dates
+    description: "Dimensão de datas derivada da seed 'dim_dates_2010_2025' (2010-01-01 a 2025-09-12)."
+    columns:
+      - name: data
+        description: "Data (YYYY-MM-DD)."
+        tests:
+          - not_null
+          - unique
+
+      - name: ano
+        description: "Ano."
+
+      - name: trimestre
+        description: "Trimestre (1–4)."
+
+      - name: mes
+        description: "Mês (1–12)."
+
+      - name: nome_mes
+        description: "Nome do mês."
+
+      - name: semana
+        description: "Semana ISO do ano."
+
+      - name: dia
+        description: "Dia do mês."
+
+      - name: dia_semana_num
+        description: "Número do dia da semana (1=Domingo ... 7=Sábado)."
+
+      - name: dia_semana_nome
+        description: "Nome do dia da semana."
+
+      - name: tipo_dia
+        description: "Dia Útil ou Final de Semana."
+
+      - name: ano_mes
+        description: "Ano e mês (YYYY-MM)."
+
+      - name: ano_mes_label
+        description: "Rótulo Ano-Mês."
+
+      - name: semestre
+        description: "Semestre (1 ou 2)."
+
+      - name: ano_semestre
+        description: "Ano-Semestre."
+
+      - name: bimestre
+        description: "Bimestre (1–6)."
+
+      - name: ano_bimestre
+        description: "Ano-Bimestre."
+
+      - name: ano_trimestre
+        description: "Ano-Trimestre."
+
+      - name: primeiro_dia_mes
+        description: "Primeiro dia do mês."
+
+      - name: ultimo_dia_mes
+        description: "Último dia do mês."
+
+      - name: primeiro_dia_semana
+        description: "Primeiro dia da semana (ISO)."
+
+      - name: ultimo_dia_semana
+        description: "Último dia da semana (ISO)."
+
+      - name: is_inicio_mes
+        description: "Flag para início de mês."
+
+      - name: is_fim_mes
+        description: "Flag para fim de mês."

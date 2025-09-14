@@ -1,0 +1,80 @@
+version: 2
+
+models:
+  - name: fact_transacoes
+    description: "Fato de transações (grão: 1 linha por transação), enriquecida com contas, clientes, agências, colaboradores e calendário."
+    columns:
+      # chaves
+      - name: sk_transacao
+        description: "Surrogate key da transação (herdada da int_transacoes)."
+        tests:
+          - not_null
+          - unique
+
+      - name: id_transacao
+        description: "Identificador natural da transação."
+        tests:
+          - not_null
+          - unique
+
+      # FKs naturais
+      - name: numero_conta
+        description: "Número da conta associada à transação."
+        tests: [not_null]
+
+      - name: id_cliente
+        description: "Identificador do cliente (derivado da conta)."
+
+      - name: id_agencia
+        description: "Identificador da agência (derivado da conta)."
+
+      - name: id_colaborador
+        description: "Identificador do colaborador responsável (derivado da conta)."
+
+      # FKs substitutas (dimensões)
+      - name: sk_conta
+        description: "Surrogate key da conta (FK para dim_contas)."
+
+      - name: sk_clientes
+        description: "Surrogate key do cliente (FK para dim_clientes)."
+
+      - name: sk_agencias
+        description: "Surrogate key da agência (FK para dim_agencias)."
+
+      - name: sk_colaboradores
+        description: "Surrogate key do colaborador (FK para dim_colaboradores)."
+
+      # tempo
+      - name: data
+        description: "Data da transação (FK para dim_dates.data)."
+        tests:
+          - not_null
+
+      - name: ano
+        description: "Ano (dim_dates)."
+      - name: mes
+        description: "Mês (dim_dates)."
+      - name: trimestre
+        description: "Trimestre (dim_dates)."
+      - name: dia
+        description: "Dia do mês (dim_dates)."
+      - name: dia_semana_num
+        description: "Número do dia da semana (1=Domingo ... 7=Sábado, dim_dates)."
+      - name: dia_semana_nome
+        description: "Nome do dia da semana (dim_dates)."
+      - name: tipo_dia
+        description: "Dia Útil ou Final de Semana (dim_dates)."
+      - name: ano_mes
+        description: "Ano-Mês (YYYY-MM, dim_dates)."
+
+      # métricas
+      - name: valor_transacao
+        description: "Valor monetário da transação (positivo=crédito, negativo=débito)."
+
+      # auxiliares
+      - name: nome_transacao
+        description: "Descrição/nome da transação."
+      - name: flag_credito
+        description: "Indicador (1/0) se a transação é de crédito (valor >= 0)."
+      - name: flag_debito
+        description: "Indicador (1/0) se a transação é de débito (valor < 0)."

@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_transacoes
+    description: "Tabela da camada staging de transações bancárias."
+    columns:
+      - name: id_transacao
+        description: "Identificador único da transação."
+        tests:
+          - not_null
+          - unique
+
+      - name: numero_conta
+        description: "Número da conta associada à transação."
+        tests:
+          - not_null
+
+      - name: data_transacao
+        description: "Data da transação bancária."
+        tests:
+          - not_null
+
+      - name: nome_transacao
+        description: "Descrição ou nome da transação."
+
+      - name: valor_transacao
+        description: "Valor monetário da transação."
+        tests:
+          - not_null
